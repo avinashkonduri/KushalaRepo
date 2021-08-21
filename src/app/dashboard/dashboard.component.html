@@ -1,0 +1,21 @@
+<!-- <div class="container" *ngFor="let arr of arrayDataString">
+  <H3>{{arr}}</H3>
+</div> -->
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Role</th>
+      <th scope="col">Location</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let obj of arrayDataObj;index as i">
+    <tr>
+      <th scope="row">{{i+1}}</th>
+      <td>{{obj.name}}</td>
+      <td>{{obj.role}}</td>
+      <td>{{obj.location}}</td>
+    </tr>
+  </tbody>
+</table>
