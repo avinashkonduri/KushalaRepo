@@ -6,19 +6,22 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { DemoComponent } from './demo/demo.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
   declarations: [
     DemoComponent,
     DashboardComponent,
-    ReactiveFormsComponent
+    ReactiveFormsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     CoreModuleRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports: [
     DashboardComponent,

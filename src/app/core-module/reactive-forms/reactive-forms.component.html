@@ -1,35 +1,50 @@
-<label for="name">Name: </label>
+<!-- <label for="name">Name: </label>
 <input id="name" type="text" [formControl]="name">
 <p>Value: {{ name.value }}</p>
 <button (click)="updateName()">Update Name</button>
-<h3>Profile Form</h3>
-<form [formGroup]="profileForm1" (ngSubmit)="onSubmit()">
+<h3>Profile Form</h3> -->
+<div class="row">
+  <div class="col-6 m-auto">
+    <div class="card m-auto">
+      <div class="card-header">
+        Register
+    </div>
+    <div class="card-body">
+      <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        <div class="form-group col-12">
+          <label for="first-name" class="form-label">First Name:</label>
+          <input id="first-name" class="form-control" type="text" formControlName="firstName">
+        </div>
+        <div class="form-group col-12" >
+          <label for="last-name" class="form-label">Last Name:</label>
 
-  <label for="first-name">First Name: </label>
-  <input id="first-name" type="text" formControlName="firstName">
+          <input id="last-name" class="form-control" type="text" formControlName="lastName">
+        </div>
+        <div class="form-group col-12" >
+          <label class="form-label">Gender:
+          </label>
+          <input type="radio" formControlName="gender" value="male">Male
+            <input type="radio" formControlName="gender" value="female">Female
+        </div>
+        <div class="form-group col-12">
+          <label for="p-email" class="form-label">Email:
 
-  <label for="last-name">Last Name: </label>
-  <input id="last-name" type="text" formControlName="lastName">
+          </label>
+          <input id="email" class="form-control" type="email" formControlName="email">
+        </div>
+        <div class="form-group col-12" >
+          <label for="password" class="form-label">Password:
 
-  <label for="p-email">Email</label>
-  <input id="email" type="email" formControlName="email">
-  <div formGroupName="address">
-    <h2>Address</h2>
+          </label>
+          <input id="password" class="form-control" type="password" formControlName="password">
+        </div>
+        <button type="submit" class="btn btn-sm btn-primary" [disabled]="!profileForm.valid">Submit</button>
+      </form>
+    </div>
+    </div>
 
-    <label for="street">Street: </label>
-    <input id="street" type="text" formControlName="street">
-
-    <label for="city">City: </label>
-    <input id="city" type="text" formControlName="city">
-
-    <label for="state">State: </label>
-    <input id="state" type="text" formControlName="state">
-
-    <label for="zip">Zip Code: </label>
-    <input id="zip" type="text" formControlName="zip">
   </div>
-  <p>Complete the form to enable button.</p>
-  <button type="submit" [disabled]="!profileForm1.valid">Submit</button>
-</form>
+</div>
+
 <p>Form Value: {{formData}}</p>
 <p>Form Status: {{ profileForm1.status }}</p>
