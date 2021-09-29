@@ -1,9 +1,11 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModuleModule } from './core-module/core-module.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -12,7 +14,9 @@ import { CoreModuleModule } from './core-module/core-module.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CoreModuleModule
+    CoreModuleModule,
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

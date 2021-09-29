@@ -1,0 +1,42 @@
+<div class="modal-header">
+  <h4 class="modal-title">Hi there!</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="form-group col-12">
+      <label for="id" class="form-label">Id:</label>
+      <input id="id" class="form-control" type="text" formControlName="id">
+    </div>
+    <div class="form-group col-12">
+      <label for="name" class="form-label">Name:
+
+      </label>
+      <input id="name" class="form-control" type="text" formControlName="name">
+    </div>
+    <div class="form-group col-12">
+      <label for="p-email" class="form-label">Email:
+
+      </label>
+      <input id="email" class="form-control" type="email" formControlName="email">
+    </div>
+    <div class="form-group col-12" >
+      <label class="form-label">Gender:
+      </label>
+      <input type="radio" formControlName="gender" value="male">Male
+        <input type="radio" formControlName="gender" value="female">Female
+    </div>
+    <div class="form-group col-12" >
+      <label for="status" class="form-label">Status:</label>
+
+      <input id="status" class="form-control" type="text" formControlName="status">
+    </div>
+
+    <button type="submit" class="btn btn-sm btn-primary" [disabled]="!profileForm.valid">Submit</button>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>
