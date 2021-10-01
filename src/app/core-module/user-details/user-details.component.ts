@@ -24,22 +24,49 @@ profileForm = new FormGroup({
 
   ngOnInit(): void {
     console.log(this.fromParent);
-    this.profileForm.controls['id'].setValue(this.fromParent.id);
-    this.profileForm.controls['name'].setValue(this.fromParent.name);
-    this.profileForm.controls['email'].setValue(this.fromParent.email);
-    this.profileForm.controls['gender'].setValue(this.fromParent.gender);
-    this.profileForm.controls['status'].setValue(this.fromParent.status);
+    if(this.fromParent.action == 'new') {
+      console.log(this.fromParent.action);
+    }
+    else {
+      this.userService.getUserListById(this.fromParent.id).subscribe((resp: any) => {
+        this.profileForm.controls['id'].setValue(resp.data.id);
+        this.profileForm.controls['name'].setValue(resp.data.name);
+        this.profileForm.controls['email'].setValue(resp.data.email);
+        this.profileForm.controls['gender'].setValue(resp.data.gender);
+        this.profileForm.controls['status'].setValue(resp.data.status);
+      });
+    }
+
+    // this.profileForm.controls['id'].setValue(this.fromParent.id);
+    // this.profileForm.controls['name'].setValue(this.fromParent.name);
+    // this.profileForm.controls['email'].setValue(this.fromParent.email);
+    // this.profileForm.controls['gender'].setValue(this.fromParent.gender);
+    // this.profileForm.controls['status'].setValue(this.fromParent.status);
   }
   onSubmit(){
     console.warn(this.profileForm.value);
-    this.userService.updateApi(this.userData()).subscribe((resp:any) =>{
-      if(resp) {
-        alert('Updated the User');
-      }
-      else {
-        alert('Updated the not User');
-      }
-    })
+    if(this.fromParent.action == 'new') {
+      this.userService.addApiUser(this.userData()).subscribe((resp: any) => {
+        if(resp) {
+          alert('Added User Successfully');
+          this.profileForm.reset();
+        }
+        else {
+          alert('User Not added');
+        }
+      })
+    }
+    else {
+      this.userService.updateApi(this.userData()).subscribe((resp:any) =>{
+        if(resp) {
+          alert('Updated the User');
+        }
+        else {
+          alert('Updated the not User');
+        }
+      })
+    }
+
   }
 
 

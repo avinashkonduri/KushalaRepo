@@ -22,4 +22,16 @@ export class DummyApiService {
   updateApi(user: any){
     return this.http.put(API + 'users/'+user.id, user, {headers});
   }
+
+  getUserListById(id: number) {
+    return this.http.get(API + 'users/'+id, {headers});
+  }
+
+  addApiUser(user: any){
+    return this.http.post(API +'users/', user , {headers});
+  }
+
+  deleteUser(id: number){
+    return this.http.delete(API + 'users/'+id, {headers});
+  }
 }

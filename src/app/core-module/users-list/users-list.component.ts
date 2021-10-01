@@ -33,7 +33,7 @@ export class UsersListComponent implements OnInit {
         // backdrop: 'static'
       });
       let data = {
-        id:user.id,name:user.name,gender:user.gender,email:user.email,status:user.status,
+        id:user.id
       }
 
       modalRef.componentInstance.fromParent = data;
@@ -41,5 +41,30 @@ export class UsersListComponent implements OnInit {
         console.log(result);
       }, (reason) => {
       });
+  }
+
+  addUser(){
+    const modalRef = this.modalService.open(UserDetailsComponent,
+      {
+        scrollable: true,
+        windowClass: 'myCustomModalClass',
+        // keyboard: false,
+        // backdrop: 'static'
+      });
+      let data = {
+        action: 'new'
+      }
+
+      modalRef.componentInstance.fromParent = data;
+      modalRef.result.then((result) => {
+        console.log(result);
+      }, (reason) => {
+      });
+  }
+  deleteUser(id: number){
+    console.log("Delete Id: " +id);
+    this.userService.deleteUser(id).subscribe((responseData:any) => {
+        console.log(responseData);
+    })
   }
 }
